@@ -45,6 +45,7 @@ jobs:
           exit 1
         fi
         ' _ {} \;
+
         git add .
         if git diff-index --quiet HEAD --; then
           echo "No changes to commit"
@@ -52,3 +53,4 @@ jobs:
         else
           git commit -m "Merged sing-box directory from ruleset.skk.moe repository"
           git push
+        fi  # 这里要确保有结束的 fi
