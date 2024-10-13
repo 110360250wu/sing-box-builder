@@ -41,25 +41,43 @@ jobs:
 
     - name: Fetch and Compile Sing-Box Rules from ruleset
       run: |
+        set -e
         git remote add ruleset https://github.com/SukkaLab/ruleset.skk.moe.git
         git fetch ruleset
         git checkout ruleset/master -- sing-box
         rm -rf domainset ip non_ip
         mv sing-box/* ./
         rm -rf sing-box sing-box-1.9.7-linux-amd64 sing-box.tar.gz
-        find . -type f -name "*.srs" -exec rm -f {} \;
-        find . -type f -name "*.json" -exec bash -c '
-        echo "Compiling: $1"
-        if ! sing-box rule-set compile "$1"; then
-          echo "Error compiling $1"
-          exit 1
-        fi
-        ' _ {} \;
+
+        echo "Listing current directory contents:"
+        ls -la
+
+        echo "Compiling JSON files to SRS format:"
+        find . -type f -name "*.json" -print0 | while IFS= read -r -d '' file; do
+          echo "Processing file: $file"
+          output_file="${file%.json}.srs"
+          if sing-box rule-set compile "$file" -o "$output_file"; then
+            echo "Successfully compiled $file to $output_file"
+          else
+            echo "Error compiling $file"
+            exit 1
+          fi
+        done
+
+        echo "Listing compiled SRS files:"
+        find . -type f -name "*.srs"
+
         git add .
         if git diff-index --quiet HEAD --; then
           echo "No changes to commit"
           echo "No updates needed"
         else
-          git commit -m "Merged sing-box directory from ruleset.skk.moe repository"
+          git commit -m "Merged and compiled sing-box rules from ruleset.skk.moe repository"
           git push
         fi
+
+    - name: Upload artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: compiled-rules
+        path: ./*.srs
