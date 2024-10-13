@@ -1,84 +1,51 @@
-name: Sync and Compile Sing-Box Rules
+name: Update Sing-Box Rules
 
 on:
   schedule:
-    - cron: "0 2 * * *"
-  workflow_dispatch:
-
-permissions:
-  contents: write
+    - cron: '0 0 * * *'  # Runs at 00:00 UTC every day
+  workflow_dispatch:  # Allows manual triggering
 
 jobs:
-  sync_and_compile:
+  update-rules:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout the repository
-      uses: actions/checkout@v4
-
+      uses: actions/checkout@v3
+    
     - name: Set up Git user
       run: |
         git config user.name "github-actions[bot]"
         git config user.email "github-actions[bot]@users.noreply.github.com"
-
-    - name: Install sing-box (v1.9.7)
+    
+    - name: Install sing-box
       run: |
         curl -Lo sing-box.tar.gz https://github.com/SagerNet/sing-box/releases/download/v1.9.7/sing-box-1.9.7-linux-amd64.tar.gz
         tar -xzf sing-box.tar.gz
         chmod +x sing-box-1.9.7-linux-amd64/sing-box
         sudo mv sing-box-1.9.7-linux-amd64/sing-box /usr/local/bin/sing-box
         sing-box version
-      continue-on-error: true
-      id: install_v1_9_7
-
-    - name: Install sing-box (v1.10.0-alpha.29) as fallback
-      if: steps.install_v1_9_7.outcome == 'failure'
-      run: |
-        curl -Lo sing-box.tar.gz https://github.com/SagerNet/sing-box/releases/download/v1.10.0-alpha.29/sing-box-1.10.0-alpha.29-linux-amd64.tar.gz
-        tar -xzf sing-box.tar.gz
-        chmod +x sing-box-1.10.0-alpha.29-linux-amd64/sing-box
-        sudo mv sing-box-1.10.0-alpha.29-linux-amd64/sing-box /usr/local/bin/sing-box
-        sing-box version
-
+    
     - name: Fetch and Compile Sing-Box Rules from ruleset
       run: |
-        set -e
         git remote add ruleset https://github.com/SukkaLab/ruleset.skk.moe.git
         git fetch ruleset
         git checkout ruleset/master -- sing-box
         rm -rf domainset ip non_ip
         mv sing-box/* ./
         rm -rf sing-box sing-box-1.9.7-linux-amd64 sing-box.tar.gz
-
-        echo "Listing current directory contents:"
-        ls -la
-
-        echo "Compiling JSON files to SRS format:"
-        find . -type f -name "*.json" -print0 | while IFS= read -r -d '' file; do
-          echo "Processing file: $file"
-          output_file="${file%.json}.srs"
-          if sing-box rule-set compile "$file" -o "$output_file"; then
-            echo "Successfully compiled $file to $output_file"
-          else
-            echo "Error compiling $file"
-            exit 1
-          fi
-        done
-
-        echo "Listing compiled SRS files:"
-        find . -type f -name "*.srs"
-
+        find . -type f -name "*.srs" -exec rm -f {} \;
+        find . -type f -name "*.json" -exec bash -c '
+        echo "Compiling: $1"
+        if ! sing-box rule-set compile "$1"; then
+          echo "Error compiling $1"
+          exit 1
+        fi
+        ' _ {} \;
         git add .
         if git diff-index --quiet HEAD --; then
           echo "No changes to commit"
           echo "No updates needed"
         else
-          git commit -m "Merged and compiled sing-box rules from ruleset.skk.moe repository"
+          git commit -m "Merged sing-box directory from ruleset.skk.moe repository"
           git push
         fi
-
-    - name: Upload artifact
-      uses: actions/upload-artifact@v4
-      with:
-        name: compiled-rules
-        path: ./*.srs
-        if-no-files-found: warn
