@@ -2,9 +2,9 @@ name: Sync and Compile Sing-Box Rules
 
 on:
   schedule:
-    - cron: "0 2 * * *"  # 每天 UTC 时间凌晨 2 点定时运行
-  workflow_dispatch:  # 手动触发工作流
-
+    - cron: "0 2 * * *"
+  workflow_dispatch:
+  
 permissions:
   contents: write
 
@@ -13,52 +13,31 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    # 第一步：同步仓库
-    - name: Checkout code
+    - name: Checkout the repository
       uses: actions/checkout@v3
 
-    # 第二步：设置 Node.js 版本
-    - name: Set up Node.js 20.x
-      uses: actions/setup-node@v3
-      with:
-        node-version: '20.x'
-
-    # 第三步：设置 Git 用户信息，用于提交更改
     - name: Set up Git user
       run: |
         git config user.name "github-actions[bot]"
         git config user.email "github-actions[bot]@users.noreply.github.com"
 
-    # 第四步：安装 sing-box 1.9.7 版本
-    - name: Install sing-box 1.9.7
+    - name: Install sing-box
       run: |
-        curl -Lo sing-box.tar.gz https://github.com/SagerNet/sing-box/releases/download/v1.9.7/sing-box-1.9.7-linux-amd64.tar.gz
+        curl -Lo sing-box.tar.gz https://github.com/SagerNet/sing-box/releases/download/v1.10.0-alpha.29/sing-box-1.10.0-alpha.29-linux-amd64.tar.gz
         tar -xzf sing-box.tar.gz
-        chmod +x sing-box-1.9.7-linux-amd64/sing-box
-        sudo mv sing-box-1.9.7-linux-amd64/sing-box /usr/local/bin/sing-box
-        sing-box version  # 检查安装成功
+        chmod +x sing-box-1.10.0-alpha.29-linux-amd64/sing-box
+        sudo mv sing-box-1.10.0-alpha.29-linux-amd64/sing-box /usr/local/bin/sing-box
+        sing-box version
 
-    # 第五步：从上游仓库获取规则集并编译
     - name: Fetch and Compile Sing-Box Rules from ruleset
       run: |
-        # 添加上游规则集仓库
         git remote add ruleset https://github.com/SukkaLab/ruleset.skk.moe.git
         git fetch ruleset
-
-        # 从上游规则集中获取 sing-box 规则部分
         git checkout ruleset/master -- sing-box
-
-        # 删除旧的规则文件夹
         rm -rf domainset ip non_ip
-
-        # 提取 sing-box 目录下的文件
         mv sing-box/* ./
-        rm -rf sing-box sing-box-1.9.7-linux-amd64 sing-box.tar.gz
-
-        # 删除旧的二进制 .srs 文件，避免冲突
+        rm -rf sing-box sing-box-1.10.0-alpha.29-linux-amd64 sing-box.tar.gz
         find . -type f -name "*.srs" -exec rm -f {} \;
-
-        # 编译 sing-box 规则集，将 .json 转换为 .srs 二进制文件
         find . -type f -name "*.json" -exec bash -c '
         echo "Compiling: $1"
         if ! sing-box rule-set compile "$1"; then
@@ -66,11 +45,7 @@ jobs:
           exit 1
         fi
         ' _ {} \;
-
-        # 将所有更改暂存
         git add .
-
-        # 如果有变动则提交并推送更改
         if git diff-index --quiet HEAD --; then
           echo "No changes to commit"
           echo "No updates needed"
