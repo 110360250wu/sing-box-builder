@@ -4,7 +4,7 @@ on:
   schedule:
     - cron: "0 2 * * *"
   workflow_dispatch:
-  
+
 permissions:
   contents: write
 
@@ -51,5 +51,20 @@ jobs:
           echo "No updates needed"
         else
           git commit -m "Merged sing-box directory from ruleset.skk.moe repository"
+          git push
+        fi
+
+    - name: Modify SRS version
+      run: |
+        echo "Modifying .srs files to change version: 2 to version: 1"
+        find . -type f -name "*.srs" -exec sed -i 's/version: 2/version: 1/g' {} +
+        
+    - name: Commit and push version changes
+      run: |
+        git add .
+        if git diff-index --quiet HEAD --; then
+          echo "No changes to commit for version modification"
+        else
+          git commit -m "Updated version in .srs files from 2 to 1"
           git push
         fi
