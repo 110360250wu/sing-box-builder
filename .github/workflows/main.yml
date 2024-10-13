@@ -1,22 +1,29 @@
-name: Update Sing-Box Rules
+name: Sync and Compile Sing-Box Rules
 
 on:
   schedule:
-    - cron: '0 0 * * *'  # Runs at 00:00 UTC every day
-  workflow_dispatch:  # Allows manual triggering
+    - cron: "0 2 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
-  update-rules:
+  sync_and_compile:
     runs-on: ubuntu-latest
+
     steps:
+    # 同步你自己的仓库文件到当前的 ubuntu 环境里
     - name: Checkout the repository
       uses: actions/checkout@v3
-    
+
+    # 设定 Git 用户信息
     - name: Set up Git user
       run: |
         git config user.name "github-actions[bot]"
         git config user.email "github-actions[bot]@users.noreply.github.com"
-    
+
+    # 安装 sing-box 1.9.7 版本
     - name: Install sing-box
       run: |
         curl -Lo sing-box.tar.gz https://github.com/SagerNet/sing-box/releases/download/v1.9.7/sing-box-1.9.7-linux-amd64.tar.gz
@@ -24,7 +31,8 @@ jobs:
         chmod +x sing-box-1.9.7-linux-amd64/sing-box
         sudo mv sing-box-1.9.7-linux-amd64/sing-box /usr/local/bin/sing-box
         sing-box version
-    
+
+    # 同步上游仓库并编译 sing-box 规则
     - name: Fetch and Compile Sing-Box Rules from ruleset
       run: |
         git remote add ruleset https://github.com/SukkaLab/ruleset.skk.moe.git
