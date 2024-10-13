@@ -4,7 +4,7 @@ on:
   schedule:
     - cron: "0 2 * * *"
   workflow_dispatch:
-  
+
 permissions:
   contents: write
 
@@ -28,6 +28,11 @@ jobs:
         chmod +x sing-box-1.10.0-alpha.29-linux-amd64/sing-box
         sudo mv sing-box-1.10.0-alpha.29-linux-amd64/sing-box /usr/local/bin/sing-box
         sing-box version
+
+    - name: Modify SRS version
+      run: |
+        echo "Modifying .srs files to change version: 2 to version: 1"
+        find . -type f -name "*.srs" -exec sed -i 's/version: 2/version: 1/g' {} +
 
     - name: Fetch and Compile Sing-Box Rules from ruleset
       run: |
