@@ -8,6 +8,10 @@ on:
 permissions:
   contents: write
 
+env:
+  SING_BOX_VERSION: v1.10.0-alpha.29
+  NEW_VERSION: 1
+
 jobs:
   sync_and_compile:
     runs-on: ubuntu-latest
@@ -21,52 +25,72 @@ jobs:
         git config user.name "github-actions[bot]"
         git config user.email "github-actions[bot]@users.noreply.github.com"
 
+    - name: Cache sing-box
+      uses: actions/cache@v2
+      with:
+        path: /usr/local/bin/sing-box
+        key: ${{ runner.os }}-sing-box-${{ env.SING_BOX_VERSION }}
+
     - name: Install sing-box
+      if: steps.cache-sing-box.outputs.cache-hit != 'true'
       run: |
-        curl -Lo sing-box.tar.gz https://github.com/SagerNet/sing-box/releases/download/v1.10.0-alpha.29/sing-box-1.10.0-alpha.29-linux-amd64.tar.gz
+        curl -Lo sing-box.tar.gz https://github.com/SagerNet/sing-box/releases/download/${{ env.SING_BOX_VERSION }}/sing-box-${{ env.SING_BOX_VERSION }}-linux-amd64.tar.gz
         tar -xzf sing-box.tar.gz
-        chmod +x sing-box-1.10.0-alpha.29-linux-amd64/sing-box
-        sudo mv sing-box-1.10.0-alpha.29-linux-amd64/sing-box /usr/local/bin/sing-box
+        chmod +x sing-box-${{ env.SING_BOX_VERSION }}-linux-amd64/sing-box
+        sudo mv sing-box-${{ env.SING_BOX_VERSION }}-linux-amd64/sing-box /usr/local/bin/sing-box
         sing-box version
 
-    - name: Fetch and Compile Sing-Box Rules from ruleset
+    - name: Fetch and merge upstream changes
       run: |
-        git remote add ruleset https://github.com/SukkaLab/ruleset.skk.moe.git
-        git fetch ruleset
-        git checkout ruleset/master -- sing-box
-        rm -rf domainset ip non_ip
-        mv sing-box/* ./
-        rm -rf sing-box sing-box-1.10.0-alpha.29-linux-amd64 sing-box.tar.gz
-        find . -type f -name "*.srs" -exec rm -f {} \;
-        find . -type f -name "*.json" -exec bash -c '
-        echo "Compiling: $1"
-        if ! sing-box rule-set compile "$1"; then
-          echo "Error compiling $1"
-          exit 1
-        fi
-        ' _ {} \;
+        git remote add upstream https://github.com/SukkaLab/ruleset.skk.moe.git
+        git fetch upstream
+        git merge upstream/master --allow-unrelated-histories -X theirs
 
     - name: Update version in JSON and SRS files
       run: |
         # Update JSON files
-        find . -type f -name "*.json" -exec sed -i 's/"version": 2,/"version": 1,/' {} +
+        find . -type f -name "*.json" -exec sed -i 's/"version": 2,/"version": ${{ env.NEW_VERSION }},/' {} +
         
-        # Recompile SRS files after JSON update
-        find . -type f -name "*.json" -exec bash -c '
-        echo "Recompiling: $1"
-        if ! sing-box rule-set compile "$1"; then
-          echo "Error recompiling $1"
-          exit 1
-        fi
-        ' _ {} \;
+        # Update SRS files
+        find . -type f -name "*.srs" -exec sed -i 's/\x02\x00\x00\x00/\x01\x00\x00\x00/' {} +
+
+    - name: Compile updated JSON files
+      run: |
+        find . -type f -name "*.json" -print0 | xargs -0 -I {} sh -c '
+          echo "Compiling: {}"
+          if ! sing-box rule-set compile "{}"; then
+            echo "Error compiling {}"
+            exit 1
+          fi
+        '
+
+    - name: Verify compiled rules
+      run: |
+        find . -type f -name "*.srs" | while read file; do
+          if ! sing-box rule-set test "$file"; then
+            echo "Error: $file failed verification"
+            exit 1
+          fi
+        done
+
+    - name: Clean up
+      run: |
+        find . -type f -name "*.bak" -delete
+        find . -type f -name "*.tmp" -delete
 
     - name: Commit and push changes
       run: |
         git add .
         if git diff-index --quiet HEAD --; then
           echo "No changes to commit"
-          echo "No updates needed"
         else
-          git commit -m "Updated sing-box rules and changed version to 1"
+          git commit -m "Updated sing-box rules and changed version to ${{ env.NEW_VERSION }}"
           git push
         fi
+
+    - name: Log summary
+      run: |
+        echo "Updated files:"
+        git diff --name-only HEAD^
+        echo "Total JSON files: $(find . -name '*.json' | wc -l)"
+        echo "Total SRS files: $(find . -name '*.srs' | wc -l)"
