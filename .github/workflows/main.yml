@@ -4,7 +4,7 @@ on:
   schedule:
     - cron: "0 2 * * *"
   workflow_dispatch:
-
+  
 permissions:
   contents: write
 
@@ -45,29 +45,28 @@ jobs:
           exit 1
         fi
         ' _ {} \;
-        git add .
 
-        # Check if there are changes to commit
+    - name: Update version in JSON and SRS files
+      run: |
+        # Update JSON files
+        find . -type f -name "*.json" -exec sed -i 's/"version": 2,/"version": 1,/' {} +
+        
+        # Recompile SRS files after JSON update
+        find . -type f -name "*.json" -exec bash -c '
+        echo "Recompiling: $1"
+        if ! sing-box rule-set compile "$1"; then
+          echo "Error recompiling $1"
+          exit 1
+        fi
+        ' _ {} \;
+
+    - name: Commit and push changes
+      run: |
+        git add .
         if git diff-index --quiet HEAD --; then
           echo "No changes to commit"
           echo "No updates needed"
         else
-          git commit -m "Merged sing-box directory from ruleset.skk.moe repository"
+          git commit -m "Updated sing-box rules and changed version to 1"
           git push
-        fi
-
-    - name: Update version in .srs files
-      run: |
-        echo "Updating version in .srs files"
-        find . -type f -name "*.srs" -exec sed -i 's/version: 2/version: 1/g' {} \;
-
-        # Stage the changes
-        git add .
-
-        # Commit if there are changes
-        if ! git diff-index --quiet HEAD --; then
-          git commit -m "Updated version from 2 to 1 in .srs files"
-          git push
-        else
-          echo "No changes to .srs files"
         fi
