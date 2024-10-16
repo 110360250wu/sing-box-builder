@@ -1,23 +1,23 @@
 {
-  "version": 1,
+  "version": 2,
   "rules": [
     {
       "domain": ["this_ruleset_is_made_by_sukkaw.ruleset.skk.moe"],
       "domain_suffix": [
         "t.me",
         "tx.me",
-        "tg.dev",
-        "legra.ph",
-        "graph.org",
-        "telega.one",
-        "telegra.ph",
-        "telesco.pe",
         "telegram.me",
+        "telesco.pe",
+        "legra.ph",
+        "telegra.ph",
         "tdesktop.com",
+        "tg.dev",
         "telegram.dog",
+        "telega.one",
+        "graph.org",
         "telegram.org",
-        "telegram.space",
-        "cdn-telegram.org"
+        "cdn-telegram.org",
+        "telegram.space"
       ],
       "domain_keyword": [],
       "domain_regex": [],
