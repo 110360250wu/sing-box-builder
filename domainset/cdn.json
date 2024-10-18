@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "rules": [
     {
       "domain": [
@@ -827,6 +827,8 @@
         "static.mendeley.com",
         "api.mintlify.com",
         "thumbnailer.mixcloud.com",
+        "api.mixpanel.com",
+        "api-eu.mixpanel.com",
         "cdn.modrinth.com",
         "cdn-raw.modrinth.com",
         "static.namebeta.com",

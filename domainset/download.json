@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "rules": [
     {
       "domain": [
@@ -241,6 +241,7 @@
         "dl.elementary.io",
         "mega.co.nz",
         "cdn.ea.com",
+        "artifacts.ui.com",
         "cdn.ubi.com",
         "files.1drv.com",
         "swupdate.vray.com",
