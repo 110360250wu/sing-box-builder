@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "rules": [
     {
       "domain": [
@@ -7,6 +7,9 @@
         "url.cn",
         "acg.tv",
         "b23.tv",
+        "dns.pub",
+        "doh.pub",
+        "dot.pub",
         "www.intel.cn",
         "lv.queniujq.cn",
         "dl.ubnt.com",
