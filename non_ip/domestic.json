@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "rules": [
     {
       "domain": [
@@ -316,7 +316,6 @@
         "cmbimg.com",
         "ctfile.com",
         "dnspod.com",
-        "douban.com",
         "douyin.com",
         "dpfile.com",
         "duokan.com",
