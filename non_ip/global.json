@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "rules": [
     {
       "domain": [
@@ -561,6 +561,7 @@
         "webrtc.org",
         "archive.org",
         "astrill.org",
+        "f-droid.org",
         "mozilla.org",
         "solidot.org",
         "chromium.org",
