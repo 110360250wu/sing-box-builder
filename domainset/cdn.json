@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "rules": [
     {
       "domain": [
@@ -272,6 +272,7 @@
         "f.start.me",
         "static.start.me",
         "cdn.glitch.me",
+        "cdn.picrew.me",
         "cf.javfree.me",
         "s3.acg.mn",
         "cdn01.jotfor.ms",
