@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "rules": [
     {
       "domain": [
@@ -564,6 +564,7 @@
         "freshhema.com",
         "hellobike.com",
         "ibuscloud.com",
+        "ibytedapm.com",
         "iesdouyin.com",
         "kaiyanapp.com",
         "livechina.com",
