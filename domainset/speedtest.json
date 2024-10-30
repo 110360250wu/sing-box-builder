@@ -1,9 +1,10 @@
 {
-  "version": 1,
+  "version": 2,
   "rules": [
     {
       "domain": [
         "ookla3.1und1-mobilfunk.de",
+        "speedtest1-qupra-ams-nl.ebgp.fi",
         "speedperf.axione.fr",
         "speedtest.sercomm.com",
         "speedtest.jsqiuying.com",
