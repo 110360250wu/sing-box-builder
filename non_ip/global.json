@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "rules": [
     {
       "domain": [
@@ -189,6 +189,7 @@
         "bibox.com",
         "bitly.com",
         "brave.com",
+        "cisco.com",
         "cpuid.com",
         "debug.com",
         "deepl.com",
