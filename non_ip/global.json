@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "rules": [
     {
       "domain": [
@@ -624,6 +624,7 @@
         "schema.org",
         "signal.org",
         "webrtc.org",
+        "adguard.org",
         "archive.org",
         "astrill.org",
         "f-droid.org",
