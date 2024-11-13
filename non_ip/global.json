@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "rules": [
     {
       "domain": [
@@ -90,6 +90,7 @@
         "fb.me",
         "wa.me",
         "line.me",
+        "7mmtv.me",
         "pikpak.me",
         "proton.me",
         "binance.me",
