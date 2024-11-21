@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "rules": [
     {
       "domain": [
@@ -150,6 +150,7 @@
         "netease.im",
         "gitee.io",
         "jianshu.io",
+        "daocloud.io",
         "air-matters.io",
         "openinstall.io",
         "ele.me",
