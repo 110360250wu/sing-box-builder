@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "rules": [
     {
       "domain": [
@@ -9,6 +9,7 @@
         "fedorapeople.org",
         "mirror.xtom.au",
         "mirrors.xtom.au",
+        "download.mersenne.ca",
         "file.chobit.cc",
         "builds.paranoidandroid.co",
         "mirror.xtom.de",
