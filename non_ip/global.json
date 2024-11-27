@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "rules": [
     {
       "domain": [
@@ -63,6 +63,7 @@
         "rip",
         "xxx",
         "blog",
+        "cafe",
         "goog",
         "party",
         "tools",
