@@ -1,8 +1,9 @@
 {
-  "version": 1,
+  "version": 2,
   "rules": [
     {
       "domain": [
+        "ghp.ci",
         "packagecloud.io",
         "iterm2.com",
         "pixeldrain.com",
