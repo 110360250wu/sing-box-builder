@@ -1,10 +1,11 @@
 {
-  "version": 1,
+  "version": 2,
   "rules": [
     {
       "domain": [
         "this_ruleset_is_made_by_sukkaw.ruleset.skk.moe",
         "hanime1.me",
+        "javdb.com",
         "copymanga.site",
         "www.coinbase.com"
       ],
