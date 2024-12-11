@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "rules": [
     {
       "domain": [
@@ -23,11 +23,11 @@
         "poe.com",
         "chat.com",
         "groq.com",
+        "sora.com",
         "chatgpt.com",
         "deepmind.com",
         "anthropic.com",
         "oaistatic.com",
-        "oaiusercontent.com",
         "deepmind.google",
         "notebooklm.google",
         "generativeai.google",
