@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "rules": [
     {
       "domain": [
@@ -51,6 +51,7 @@
         "speedtest.jetspeed.com.br",
         "velocidadestm.amazonett.com.br",
         "lifitelecom.brsserver.com.br",
+        "speed.ultranetrr.com.br",
         "teste.firenetwork.com.br",
         "sp1.djonhamonteiro.com.br",
         "velocidade.phinfortelecom.com.br",
