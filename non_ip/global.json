@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "rules": [
     {
       "domain": [
@@ -107,6 +107,7 @@
         "jable.tv",
         "hanime.tv",
         "twitch.tv",
+        "cableav.tv",
         "periscope.tv",
         "signal.art",
         "line.biz",
