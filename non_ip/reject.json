@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "rules": [
     {
       "domain": [
@@ -68,6 +68,7 @@
         "amplitude.com",
         "notifysrv.com",
         "advertising.com",
+        "scorecardresearch.com",
         "openx.net",
         "omtrdc.net",
         "httpdns.pro",

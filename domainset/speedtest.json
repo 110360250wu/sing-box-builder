@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "rules": [
     {
       "domain": [
@@ -80,6 +80,7 @@
         "speedtest.sercomm.com",
         "speedtest01.wowrack.com",
         "digital.babeltik.com",
+        "speedtest.hostabil.com",
         "speedtest.hostopya.com",
         "speedtest.pingless.com",
         "fra1speedtest01.skylogic.com",
