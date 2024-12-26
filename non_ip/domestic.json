@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "rules": [
     {
       "domain": [
@@ -723,6 +723,7 @@
         "kdslife.net",
         "meituan.net",
         "oschina.net",
+        "smtcdns.net",
         "biligame.net",
         "dizzylab.net",
         "staticdn.net",
