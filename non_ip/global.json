@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "rules": [
     {
       "domain": [
@@ -504,6 +504,7 @@
         "surfsharkdns.com",
         "vpnunlimited.com",
         "xhamsterlive.com",
+        "androidpolice.com",
         "bandwagonhost.com",
         "coinmarketcap.com",
         "cryptocompare.com",
