@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "rules": [
     {
       "domain": [
@@ -125,7 +125,6 @@
         "indazn.com",
         "muscdn.com",
         "ocnttv.com",
-        "sndcdn.com",
         "tiktok.com",
         "uplynk.com",
         "amebame.com",
