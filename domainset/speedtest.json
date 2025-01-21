@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "rules": [
     {
       "domain": [
@@ -21,6 +21,7 @@
         "speedtest-sg.cbn.id",
         "horizon.sadata.id",
         "speedtest.mtnetworks.mn",
+        "iperf.gakijken.nl",
         "speedtest.reconn.ru",
         "speedtest-nl.vdsina.ru",
         "speedtest-ru.vdsina.ru",
