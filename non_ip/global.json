@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "rules": [
     {
       "domain": [
@@ -539,6 +539,7 @@
         "speedtestcustom.com",
         "strongleakstest.com",
         "xn--ngstr-lra8j.com",
+        "bleepingcomputer.com",
         "cloudflareaccess.com",
         "cloudflarestatus.com",
         "elasticbeanstalk.com",

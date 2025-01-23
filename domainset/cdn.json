@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "rules": [
     {
       "domain": [
@@ -2748,6 +2748,7 @@
         "pythonhosted.org",
         "streamhentai.org",
         "featureassets.org",
+        "rescript-lang.org",
         "someonewhocares.org",
         "bmp.ovh",
         "esm.run",
