@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "rules": [
     {
       "domain": [
@@ -147,7 +147,10 @@
         "track.opentable.",
         ".net.daraz.",
         ".zooplus.",
-        "smetrics.marketing.",
+        "smetrics.",
+        "a8clk.",
+        "a8cv.",
+        "plausible.",
         "wxsnsdy",
         "adwords",
         "-tracker.biliapi.net",
