@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "rules": [
     {
       "domain": [
@@ -400,6 +400,7 @@
         "wpscdn.com",
         "xhscdn.com",
         "xiaomi.com",
+        "xincai.com",
         "xunlei.com",
         "youdao.com",
         "yuewen.com",
