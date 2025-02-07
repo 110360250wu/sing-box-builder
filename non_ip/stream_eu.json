@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "rules": [
     {
       "domain": [
@@ -9,9 +9,9 @@
       "domain_suffix": [
         "this_ruleset_is_made_by_sukkaw.ruleset.skk.moe",
         "itv.com",
-        "bbc.co.uk",
+        "tvlicensing.co.uk",
         "bbci.co.uk",
-        "tvlicensing.co.uk"
+        "bbc.co.uk"
       ],
       "domain_keyword": ["bbcfmt", "uk-live"]
     }
