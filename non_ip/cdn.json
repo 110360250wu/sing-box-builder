@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "rules": [
     {
       "domain": [
@@ -24,6 +24,7 @@
         "^static[\\w.-]*?\\.tgstat\\.ru$",
         "^ocsp\\.[\\w.-]*?\\.amazontrust\\.com$",
         "^s3\\.[\\w.-]*?\\.wasabisys\\.com$",
+        "^object-storage-[\\w.-]*?\\.vexxhost\\.net$",
         "^i[\\w.-]\\.nhentai\\.net$",
         "^t[\\w.-]\\.nhentai\\.net$",
         "^cdn[\\w.-]-thumbs\\.pornhost\\.com$",
