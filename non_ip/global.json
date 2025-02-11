@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "rules": [
     {
       "domain": [
@@ -260,7 +260,6 @@
         "clubhouseapi.com",
         "chromestatus.com",
         "cdninstagram.com",
-        "9to5terminal.com",
         "xvideos-cdn.com",
         "webpkgcache.com",
         "usertesting.com",
