@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "rules": [
     {
       "domain": [
@@ -2313,6 +2313,7 @@
         "hscollectedforms.net",
         "reasoningtheory.net",
         "azurestaticapps.net",
+        "msftauthimages.net",
         "licensebuttons.net",
         "videodelivery.net",
         "imagedelivery.net",
