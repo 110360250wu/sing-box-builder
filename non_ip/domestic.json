@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "rules": [
     {
       "domain": [
@@ -751,6 +751,7 @@
         "org.cn",
         "nmc.cn",
         "nga.cn",
+        "net.cn",
         "assets.msn.cn",
         "mcd.cn",
         "itc.cn",
