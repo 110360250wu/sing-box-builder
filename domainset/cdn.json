@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "rules": [
     {
       "domain": [
@@ -2588,6 +2588,7 @@
         "framerstatic.com",
         "fakestoreapi.com",
         "assets.digitalocean.com",
+        "storage.cloudconvert.com",
         "cdninstagram.com",
         "bootstrapcdn.com",
         "ipfs.arching-kaos.com",

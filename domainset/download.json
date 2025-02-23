@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "rules": [
     {
       "domain": [
@@ -24,6 +24,7 @@
         "mirrors.rpmfusion.org",
         "static.redox-os.org",
         "download.opensuse.org",
+        "cdn.opensuse.org",
         "ciscobinary.openh264.org",
         "repo.debiancn.org",
         "downloads.openwrt.org",
