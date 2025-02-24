@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "rules": [
     {
       "domain": [
@@ -702,6 +702,7 @@
         "binance.me",
         "proton.me",
         "pikpak.me",
+        "1anime.me",
         "7mmtv.me",
         "line.me",
         "wa.me",
