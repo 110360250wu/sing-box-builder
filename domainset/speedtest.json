@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "rules": [
     {
       "domain": [
@@ -38,6 +38,8 @@
         "speedtest-wa.waveip.org",
         "speedtest.eidnet.org",
         "akrd-speedtest.loni.org",
+        "omnilink-sjc-1-ookla.xarya.one",
+        "omnilink-dal-1-ookla.xarya.one",
         "speedtest.sea.accretive-networks.net",
         "speedtest.sunnysidehosting.net",
         "speedtest.turnkeyinternet.net",
