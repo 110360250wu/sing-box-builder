@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "rules": [
     {
       "domain": [
@@ -783,6 +783,7 @@
         "images2.cmp.optimizely.com",
         "images1.cmp.optimizely.com",
         "cdn.nerdschalk.com",
+        "cdn.app.neononepay.com",
         "media.nationwide.com",
         "tags.nationwide.com",
         "assets.mastercard.com",
@@ -952,6 +953,7 @@
         "filestore.community.support.microsoft.com",
         "images.ecomm.microsoft.com",
         "ajax.microsoft.com",
+        "uhf.microsoft.com",
         "js.memberful.com",
         "static.mediafire.com",
         "cdn-images.mailchimp.com",
@@ -1283,6 +1285,7 @@
         "iframe.nbcnews.com",
         "stubdownloader.services.mozilla.com",
         "firefox.settings.services.mozilla.com",
+        "cdn.sso.mozilla.com",
         "static.moonpay.com",
         "static.moegoat.com",
         "images.moegoat.com",
