@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "rules": [
     {
       "domain": [
@@ -771,6 +771,7 @@
         "resources.help.salesforce.com",
         "wp.salesforce.com",
         "cdn.safecharge.com",
+        "cdn.promotekit.com",
         "apps.profitihub.com",
         "media.printables.com",
         "cdn.pickystory.com",
@@ -782,6 +783,7 @@
         "images3.cmp.optimizely.com",
         "images2.cmp.optimizely.com",
         "images1.cmp.optimizely.com",
+        "static-www.onlyoffice.com",
         "cdn.nerdschalk.com",
         "cdn.app.neononepay.com",
         "media.nationwide.com",
@@ -1031,6 +1033,7 @@
         "crl.verisign.com",
         "widget.usersnap.com",
         "js.userflow.com",
+        "chatwidgetmetrics-proxy.usepylon.com",
         "apichatwidget.usepylon.com",
         "widget.usepylon.com",
         "images.unsplash.com",
@@ -1405,6 +1408,7 @@
         "rapid-cdn.yottaa.com",
         "cdn.xvidzz.com",
         "img.xhacgn.com",
+        "website-prod.cache.wpscdn.com",
         "frontend-apps.workos.com",
         "cdn.workos.com",
         "embed-ssl.wistia.com",
@@ -2136,6 +2140,7 @@
         "static.itch.io",
         "libraries.hund.io",
         "badge.fury.io",
+        "cdn.cuty.io",
         "assets.bwbx.io",
         "adkit.9pub.io",
         "npm.jsr.io",
@@ -2316,6 +2321,7 @@
         "imgpng.xyz",
         "gitcdn.xyz",
         "cdndoe.xyz",
+        "picjs.xyz",
         "chcdn.xyz",
         "imhentai.xxx",
         "imglink.win",
@@ -2514,6 +2520,7 @@
         "app-analytics-services.com",
         "akamai-content-network.com",
         "ravencoinipfs-gateway.com",
+        "dynamic-static-assets.com",
         "1passwordusercontent.com",
         "sciencedirectassets.com",
         "w-corp-staticblitz.com",
