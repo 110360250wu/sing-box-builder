@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "rules": [
     {
       "domain": [
@@ -183,6 +183,7 @@
         "download.beeper.com",
         "downloads.xrite.com",
         "cdn-patch.swtor.com",
+        "addins.deepl.com",
         "download.cpuid.com",
         "componentupdater.brave.com",
         "go-updater.brave.com",
