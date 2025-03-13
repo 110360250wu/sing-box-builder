@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "rules": [
     {
       "domain": [
@@ -491,6 +491,7 @@
         "thisav.com",
         "talkcc.com",
         "supjav.com",
+        "strava.com",
         "sophos.com",
         "sketch.com",
         "setapp.com",

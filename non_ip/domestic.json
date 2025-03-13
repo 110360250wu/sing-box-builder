@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "rules": [
     {
       "domain": [
@@ -488,6 +488,7 @@
         "youku.com",
         "ykimg.com",
         "yitao.com",
+        "yicai.com",
         "xycdn.com",
         "xmcdn.com",
         "xiniu.com",
