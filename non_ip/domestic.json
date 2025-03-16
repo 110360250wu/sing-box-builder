@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "rules": [
     {
       "domain": [
@@ -656,6 +656,7 @@
         "authing.co",
         "officewebapps.cn",
         "mobileservice.cn",
+        "elseviercdn.cn",
         "cnspeedtest.cn",
         "chinaunicom.cn",
         "baishancdnx.cn",
